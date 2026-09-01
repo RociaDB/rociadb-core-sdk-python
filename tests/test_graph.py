@@ -7,9 +7,9 @@ import uuid
 from typing import Any, List
 
 from _doubles import FakeUnaryCall
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk.graph import _GraphMixin
-from rocia_db_sdk.types import EdgeInput, NodeInput
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk.graph import _GraphMixin
+from rociadb_sdk.types import EdgeInput, NodeInput
 
 
 class _FakeGraphStub:

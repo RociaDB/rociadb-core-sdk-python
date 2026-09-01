@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Any
 
 from _doubles import FakeUnaryCall
-from rocia_db_sdk.document import _DocumentMixin
-from rocia_db_sdk.file import _FileMixin
-from rocia_db_sdk.graph import _GraphMixin
-from rocia_db_sdk.types import EdgeInput, NodeInput
+from rociadb_sdk.document import _DocumentMixin
+from rociadb_sdk.file import _FileMixin
+from rociadb_sdk.graph import _GraphMixin
+from rociadb_sdk.types import EdgeInput, NodeInput
 
 
 class _Client(_DocumentMixin, _GraphMixin, _FileMixin):

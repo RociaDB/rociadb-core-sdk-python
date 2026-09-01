@@ -20,8 +20,8 @@ import grpc
 import grpc.aio
 import pytest
 
-from rocia_db_sdk import auth as auth_module
-from rocia_db_sdk.auth import (
+from rociadb_sdk import auth as auth_module
+from rociadb_sdk.auth import (
     MIN_REFRESH_INTERVAL,
     AuthStreamUnaryInterceptor,
     AuthUnaryStreamInterceptor,
@@ -30,7 +30,7 @@ from rocia_db_sdk.auth import (
     TokenResponse,
     fetch_token,
 )
-from rocia_db_sdk.errors import RociaDbAuthError
+from rociadb_sdk.errors import RociaDbAuthError
 
 # --- test doubles -------------------------------------------------------------------
 

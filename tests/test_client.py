@@ -10,14 +10,14 @@ from __future__ import annotations
 
 import pytest
 
-from rocia_db_sdk.client import (
+from rociadb_sdk.client import (
     DEFAULT_CONNECT_TIMEOUT,
     DEFAULT_HOST,
     RociaDbBuilder,
     _resolve_connect_timeout,
     _resolve_endpoint,
 )
-from rocia_db_sdk.errors import RociaDbConnectionError, RociaDbValidationError
+from rociadb_sdk.errors import RociaDbConnectionError, RociaDbValidationError
 
 # --- _resolve_endpoint: scheme selects TLS, missing port takes the scheme default ----
 

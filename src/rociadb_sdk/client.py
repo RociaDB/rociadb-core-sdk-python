@@ -13,19 +13,19 @@ from typing import Any, Awaitable, Callable, List, Optional, Sequence, Tuple, Ty
 import grpc
 import grpc.aio
 
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
-from rocia_db_sdk.auth import (
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
+from rociadb_sdk.auth import (
     AuthStreamUnaryInterceptor,
     AuthUnaryStreamInterceptor,
     AuthUnaryUnaryInterceptor,
     TokenManager,
     TokenRefreshHandle,
 )
-from rocia_db_sdk.document import _DocumentMixin
-from rocia_db_sdk.errors import RociaDbConnectionError, RociaDbValidationError
-from rocia_db_sdk.file import _FileMixin
-from rocia_db_sdk.graph import _GraphMixin
-from rocia_db_sdk.tenant import _TenantMixin
+from rociadb_sdk.document import _DocumentMixin
+from rociadb_sdk.errors import RociaDbConnectionError, RociaDbValidationError
+from rociadb_sdk.file import _FileMixin
+from rociadb_sdk.graph import _GraphMixin
+from rociadb_sdk.tenant import _TenantMixin
 
 #: Max in-flight calls for `put_nodes`/`add_edges`/`get_*_neighbor_nodes`.
 CONCURRENT_REQUESTS = 10

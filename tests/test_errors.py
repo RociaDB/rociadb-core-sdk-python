@@ -8,7 +8,7 @@ import grpc
 import grpc.aio
 import pytest
 
-from rocia_db_sdk.errors import (
+from rociadb_sdk.errors import (
     RociaDbAuthError,
     RociaDbConnectionError,
     RociaDbDecodeError,

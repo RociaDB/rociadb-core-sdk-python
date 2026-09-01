@@ -5,11 +5,11 @@ from __future__ import annotations
 from typing import Any, Callable, Optional, Sequence, TypeVar, overload
 from uuid import uuid4
 
-from rocia_db_sdk._pagination import _optional_cursor, _page_request
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
-from rocia_db_sdk.errors import RociaDbValidationError, _call, _decode_json, _encode_json
-from rocia_db_sdk.types import (
+from rociadb_sdk._pagination import _optional_cursor, _page_request
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
+from rociadb_sdk.errors import RociaDbValidationError, _call, _decode_json, _encode_json
+from rociadb_sdk.types import (
     CollectionInfo,
     DocumentPage,
     DocumentQueryFilter,

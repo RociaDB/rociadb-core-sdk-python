@@ -7,7 +7,7 @@ from typing import List
 
 import pytest
 
-from rocia_db_sdk.client import _run_bounded
+from rociadb_sdk.client import _run_bounded
 
 
 async def test_run_bounded_on_an_empty_input_returns_an_empty_list_without_calling_worker() -> None:

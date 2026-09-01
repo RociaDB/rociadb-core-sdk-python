@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk.errors import RociaDbValidationError
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk.errors import RociaDbValidationError
 
 #: Applied whenever a caller omits `limit` on a paginated call.
 DEFAULT_PAGE_SIZE = 20

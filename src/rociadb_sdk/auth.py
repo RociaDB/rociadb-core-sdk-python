@@ -21,7 +21,7 @@ from typing import Any, Awaitable, Callable, List, Optional, Tuple
 import grpc
 import grpc.aio
 
-from rocia_db_sdk.errors import RociaDbAuthError, RociaDbError
+from rociadb_sdk.errors import RociaDbAuthError, RociaDbError
 
 _logger = logging.getLogger(__name__)
 

@@ -7,8 +7,8 @@ from typing import AsyncIterator, List, TypeVar
 
 import pytest
 
-from rocia_db_sdk.errors import RociaDbValidationError
-from rocia_db_sdk.file import (
+from rociadb_sdk.errors import RociaDbValidationError
+from rociadb_sdk.file import (
     CHECKSUM_LEN,
     MAX_FILE_BYTES,
     UPLOAD_CHUNK_BYTES,

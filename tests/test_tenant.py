@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Any
 
 from _doubles import FakeUnaryCall
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk.tenant import _TenantMixin
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk.tenant import _TenantMixin
 
 
 class _FakeTenantsStub:

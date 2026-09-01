@@ -11,11 +11,11 @@ from __future__ import annotations
 
 import inspect
 
-from rocia_db_sdk._pagination import DEFAULT_PAGE_SIZE
-from rocia_db_sdk.auth import MIN_REFRESH_INTERVAL
-from rocia_db_sdk.client import CONCURRENT_REQUESTS, DEFAULT_CONNECT_TIMEOUT, DEFAULT_HOST
-from rocia_db_sdk.file import CHECKSUM_LEN, MAX_FILE_BYTES, UPLOAD_CHUNK_BYTES, _FileMixin
-from rocia_db_sdk.graph import _NEIGHBOR_HYDRATION_PAGE_SIZE
+from rociadb_sdk._pagination import DEFAULT_PAGE_SIZE
+from rociadb_sdk.auth import MIN_REFRESH_INTERVAL
+from rociadb_sdk.client import CONCURRENT_REQUESTS, DEFAULT_CONNECT_TIMEOUT, DEFAULT_HOST
+from rociadb_sdk.file import CHECKSUM_LEN, MAX_FILE_BYTES, UPLOAD_CHUNK_BYTES, _FileMixin
+from rociadb_sdk.graph import _NEIGHBOR_HYDRATION_PAGE_SIZE
 
 
 def test_default_page_size_is_20() -> None:

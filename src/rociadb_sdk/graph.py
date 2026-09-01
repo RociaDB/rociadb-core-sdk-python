@@ -5,11 +5,11 @@ from __future__ import annotations
 from typing import Any, Callable, Iterable, List, Literal, Optional, TypeVar, overload
 from uuid import uuid4
 
-from rocia_db_sdk._pagination import _next_pagination_cursor, _optional_cursor, _page_request
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
-from rocia_db_sdk.errors import _call, _decode_json, _encode_json
-from rocia_db_sdk.types import EdgeInput, Neighbor, NeighborNode, NodeInput, Page
+from rociadb_sdk._pagination import _next_pagination_cursor, _optional_cursor, _page_request
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2_grpc as rpc
+from rociadb_sdk.errors import _call, _decode_json, _encode_json
+from rociadb_sdk.types import EdgeInput, Neighbor, NeighborNode, NodeInput, Page
 
 T = TypeVar("T")
 
@@ -60,7 +60,7 @@ class _GraphMixin:
         failure. Every item carries its own idempotency key (defaulted the same way as
         `put_node` when omitted), so replaying the same batch after a failure is safe.
         """
-        from rocia_db_sdk.client import CONCURRENT_REQUESTS, _run_bounded
+        from rociadb_sdk.client import CONCURRENT_REQUESTS, _run_bounded
 
         async def worker(node: NodeInput) -> None:
             await self.put_node(
@@ -127,7 +127,7 @@ class _GraphMixin:
         """Upsert a batch of edges with the same concurrency, ordering, atomicity, and
         replay-safety contract as `put_nodes`.
         """
-        from rocia_db_sdk.client import CONCURRENT_REQUESTS, _run_bounded
+        from rociadb_sdk.client import CONCURRENT_REQUESTS, _run_bounded
 
         async def worker(edge: EdgeInput) -> None:
             await self.add_edge(
@@ -309,7 +309,7 @@ class _GraphMixin:
         label: str,
         decoder: Optional[Callable[[Any], T]],
     ) -> List[NeighborNode[Any]]:
-        from rocia_db_sdk.client import CONCURRENT_REQUESTS, _run_bounded
+        from rociadb_sdk.client import CONCURRENT_REQUESTS, _run_bounded
 
         neighbors: List[Neighbor] = []
         cursor: Optional[str] = None

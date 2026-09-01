@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import pytest
 
-from rocia_db_sdk._pagination import (
+from rociadb_sdk._pagination import (
     DEFAULT_PAGE_SIZE,
     _next_pagination_cursor,
     _optional_cursor,
     _page_request,
 )
-from rocia_db_sdk.errors import RociaDbValidationError
+from rociadb_sdk.errors import RociaDbValidationError
 
 
 def test_page_request_defaults_limit_and_hides_empty_cursor() -> None:

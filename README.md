@@ -55,13 +55,13 @@ authorization is the calling application's responsibility; see
 - OAuth2 client credentials, unless authentication is explicitly disabled
 
 ```bash
-pip install rocia-db-sdk
+pip install rociadb-sdk
 ```
 
 or, with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv add rocia-db-sdk
+uv add rociadb-sdk
 ```
 
 The only runtime dependencies are `grpcio` and `protobuf` — the OAuth2 token
@@ -75,7 +75,7 @@ ships full inline type annotations (a `py.typed` marker) that pass
 Use the builder when you want fluent configuration:
 
 ```python
-from rocia_db_sdk import RociaDbBuilder
+from rociadb_sdk import RociaDbBuilder
 
 client = await (
     RociaDbBuilder()
@@ -119,7 +119,7 @@ client = await RociaDbBuilder().host("http://127.0.0.1:50051").disable_auth().bu
 A direct, non-fluent constructor covers the same options in one call:
 
 ```python
-from rocia_db_sdk import RociaDbClient
+from rociadb_sdk import RociaDbClient
 
 client = await RociaDbClient.connect(
     "https://db.example.com:443",
@@ -212,7 +212,7 @@ These two statuses look similar but call for opposite handling:
     credentials.
 
 ```python
-from rocia_db_sdk import RociaDbStatusError
+from rociadb_sdk import RociaDbStatusError
 
 try:
     await client.get_document("tenant-1", "products", "sku-123")
@@ -251,14 +251,14 @@ clearing the cache.
 
 ### Auth helpers outside a client
 
-`fetch_token` and `TokenManager` are importable from `rocia_db_sdk.auth` for
+`fetch_token` and `TokenManager` are importable from `rociadb_sdk.auth` for
 callers who need OAuth2 token handling outside of a `RociaDbClient` — to
 reuse the same access token against a different service, for example. They
-are not re-exported from the `rocia_db_sdk` package root, since they are
+are not re-exported from the `rociadb_sdk` package root, since they are
 useful independently of any `RociaDbClient` instance:
 
 ```python
-from rocia_db_sdk.auth import TokenManager, fetch_token
+from rociadb_sdk.auth import TokenManager, fetch_token
 
 # One-off token exchange, no caching or refresh:
 token = await fetch_token("https://auth.example.com/oauth/token", "client-id", "client-secret")
@@ -412,7 +412,7 @@ string, number, boolean, or `None`. An object or array raises
 ```python
 from typing import Optional
 
-from rocia_db_sdk import (
+from rociadb_sdk import (
     DocumentQueryFilter,
     DocumentQueryOperator,
     DocumentQuerySort,
@@ -485,7 +485,7 @@ array — and, like `put_document`, is capped at the server's
 `limits.max_doc_bytes` (2 MiB by default).
 
 ```python
-from rocia_db_sdk import NodeInput
+from rociadb_sdk import NodeInput
 
 await client.put_nodes(
     "tenant-1",
@@ -714,7 +714,7 @@ responsible for the wire contract described in
 import hashlib
 from uuid import uuid4
 
-from rocia_db_sdk import RawUploadMessage
+from rociadb_sdk import RawUploadMessage
 
 
 async def raw_upload():
@@ -827,7 +827,7 @@ alike, say), and on `code`/`reason` for gRPC-specific branching:
 ```python
 import grpc
 
-from rocia_db_sdk import RociaDbStatusError
+from rociadb_sdk import RociaDbStatusError
 
 try:
     await client.get_document("tenant-1", "products", "missing")
@@ -912,7 +912,7 @@ table below.
 | Releasing the connection and any cached auth state | `close()` / `async with` (owns its channel outright; must not be reused after) | Drop the last live `RociaDbClient` clone (`Clone` + one shared channel; no method) | `close()` (owns its channel outright, same model as Python) | Rust's ownership model shares one channel across every clone, so there is no explicit release method to call — dropping the last clone is the release point. |
 | Marking the cached token stale without blocking on a refresh | `invalidate_auth_token()` — wakes a background refresh task; the cached token is still used until that refresh completes | `invalidate_auth_token()` / `TokenManager::request_refresh` — same background-task design | `invalidateToken()` — synchronously drops the cached token; the next call fetches inline | Python mirrors Rust's background-refresh design (see [Authentication](#authentication)) rather than TypeScript's on-demand-near-expiry design, so the *method name* matches Rust while the *exact timing* differs from TypeScript's synchronous drop. |
 | Discriminating why an error happened | `RociaDbError` subclass hierarchy — `isinstance`/`except` on `RociaDbStatusError`, `RociaDbConnectionError`, etc. | `RociaDbError` — a `match`-able enum: `Status { .. }` / `Connection { .. }` / ... | `RociaDbError` — one class with a `kind: "status" \| "connection" \| ...` field | Three idiomatic shapes for the same closed set of six causes: a subclass hierarchy, a sum type, and a discriminated union. |
-| Escape hatch to the raw generated protobuf/gRPC types, to build a custom client against the same `.proto` | *(none — `rocia_db_sdk._pb` is private; every public method returns this package's own dataclasses)* | the `pb` module (`#[doc(hidden)] pub mod pb`; a few generated types are re-exported individually at the crate root) | the `rocia-db-sdk/proto` subpath export | Python deliberately keeps its generated stubs fully private — there is no equivalent escape hatch in this SDK by design. |
+| Escape hatch to the raw generated protobuf/gRPC types, to build a custom client against the same `.proto` | *(none — `rociadb_sdk._pb` is private; every public method returns this package's own dataclasses)* | the `pb` module (`#[doc(hidden)] pub mod pb`; a few generated types are re-exported individually at the crate root) | the `rocia-db-sdk/proto` subpath export | Python deliberately keeps its generated stubs fully private — there is no equivalent escape hatch in this SDK by design. |
 
 **The upload naming trap, spelled out:** `upload_file_chunked` (this SDK,
 same name as Rust) and `uploadFileStream` (TypeScript) are the *same*
@@ -949,7 +949,7 @@ uv run --python 3.10 ruff format --check .
 uv run --python 3.10 mypy
 ```
 
-The protobuf/gRPC stubs under `src/rocia_db_sdk/_pb/` are generated, vendored
+The protobuf/gRPC stubs under `src/rociadb_sdk/_pb/` are generated, vendored
 code — never edit them by hand. After changing `proto/upstream/v1/upstream.proto`
 (itself a byte-identical copy of the server's `.proto` file, never edited
 independently), regenerate them with:

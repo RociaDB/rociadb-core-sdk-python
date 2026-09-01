@@ -5,7 +5,7 @@ import grpc
 import warnings
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as upstream_dot_v1_dot_upstream__pb2
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as upstream_dot_v1_dot_upstream__pb2
 
 GRPC_GENERATED_VERSION = "1.83.1"
 GRPC_VERSION = grpc.__version__

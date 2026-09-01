@@ -16,10 +16,10 @@ import grpc.aio
 import pytest
 
 from _doubles import FakeDownloadStub, FakeStreamUnaryCall, FakeUnaryCall
-from rocia_db_sdk._pb.upstream.v1 import upstream_pb2 as pb
-from rocia_db_sdk.errors import RociaDbStatusError
-from rocia_db_sdk.file import CHECKSUM_LEN, UPLOAD_CHUNK_BYTES, _FileMixin
-from rocia_db_sdk.types import RawUploadMessage
+from rociadb_sdk._pb.upstream.v1 import upstream_pb2 as pb
+from rociadb_sdk.errors import RociaDbStatusError
+from rociadb_sdk.file import CHECKSUM_LEN, UPLOAD_CHUNK_BYTES, _FileMixin
+from rociadb_sdk.types import RawUploadMessage
 
 
 class _FakeFilesStub:

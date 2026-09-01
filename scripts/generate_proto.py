@@ -1,4 +1,4 @@
-"""Regenerate the protobuf and gRPC stubs vendored under `rocia_db_sdk._pb`.
+"""Regenerate the protobuf and gRPC stubs vendored under `rociadb_sdk._pb`.
 
 Run after any change to `proto/`. The generated files are committed so that
 installing the SDK never requires protoc.
@@ -15,8 +15,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PROTO_DIR = ROOT / "proto"
-OUT_DIR = ROOT / "src" / "rocia_db_sdk" / "_pb"
-PACKAGE = "rocia_db_sdk._pb"
+OUT_DIR = ROOT / "src" / "rociadb_sdk" / "_pb"
+PACKAGE = "rociadb_sdk._pb"
 
 # protoc emits imports rooted at the proto path ("from upstream.v1 import ...").
 # The stubs live inside the package, so those have to be rewritten to absolute
